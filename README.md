@@ -16,21 +16,6 @@ Predict likelihood of liver disease from clinical parameters using a trained ML 
 ## Overview
 This repository contains a ready-to-run Flask application that loads a trained model and predicts whether a patient is likely to have liver disease based on standard lab measurements (e.g., bilirubin, enzymes) and demographics. The app provides a simple form UI, validates inputs, and displays the predicted outcome.
 
-## Project Flow
-
-```mermaid
-flowchart TD
-  A[User Inputs Clinical Data in UI] --> B[Flask Server Receives POST]
-  B --> C[Validate & Transform Inputs]
-  C --> D[Load Trained Model (pkl)]
-  D --> E[Model Predicts: Disease / No Disease]
-  E --> F[Render Result Page with Outcome]
-```
-
-## Demo
-You can get a feel for the UI here:
-
-<img src="Images/gif.gif" width="46%" /> <img src="Images/gif1.gif" width="46%" />
 
 ## Repository Structure
 
