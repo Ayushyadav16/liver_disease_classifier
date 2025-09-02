@@ -1,118 +1,121 @@
-# Liver Disease Prediction Project ❤
-This repository consists of files required to deploy a Machine Learning Web App created with Flask and deployed using Heroku platform.
+<div align="center">
 
+# Liver Disease Classifier
 
-#### If you want to view the deployed model, click on the following link:
+Predict likelihood of liver disease from clinical parameters using a trained ML model and a simple Flask web app.
 
-• https://liver-disease-pred.herokuapp.com/
+[![Made with Python](https://img.shields.io/badge/Made%20with-Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Framework-Flask-000?logo=flask)](https://flask.palletsprojects.com/)
+[![scikit-learn](https://img.shields.io/badge/Model-sklearn-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+</div>
+
+---
+
+## Overview
+This repository contains a ready-to-run Flask application that loads a trained model and predicts whether a patient is likely to have liver disease based on standard lab measurements (e.g., bilirubin, enzymes) and demographics. The app provides a simple form UI, validates inputs, and displays the predicted outcome.
+
+## Project Flow
+
+```mermaid
+flowchart TD
+  A[User Inputs Clinical Data in UI] --> B[Flask Server Receives POST]
+  B --> C[Validate & Transform Inputs]
+  C --> D[Load Trained Model (pkl)]
+  D --> E[Model Predicts: Disease / No Disease]
+  E --> F[Render Result Page with Outcome]
+```
 
 ## Demo
-<img src="https://raw.githubusercontent.com/SagarDhandare/Liver-Disease-Prediction-Project/main/Images/gif.gif">
-<img src="https://raw.githubusercontent.com/SagarDhandare/Liver-Disease-Prediction-Project/main/Images/gif1.gif">
+You can get a feel for the UI here:
 
-## Problem Statement
-This data set contains 416 liver patient records and 167 non liver patient records collected from North East of Andhra Pradesh, India. The "Dataset" column is a class label used to divide groups into liver patient (liver disease) or not (no disease). This data set contains 441 male patient records and 142 female patient records.
+<img src="Images/gif.gif" width="46%" /> <img src="Images/gif1.gif" width="46%" />
 
-Use these patient records to determine which patients have liver disease and which ones do not.
+## Repository Structure
 
-## Dataset
-[Liver Disease Dataset](https://www.kaggle.com/uciml/indian-liver-patient-records)
-
-
-## Technology used
-- Python
-- Machine Learning
-- Pandas
-- Numpy
-- Scikit-learn
-- Flask
-- HTML
-- CSS
-- Pycharm
-- Heroku
-
-  
-## Running Tests
-
-To run app, run the following command
-
-```bash
-  python app.run
+```text
+Liver-Disease-Prediction-Project/
+├─ app.py                  # Flask app entrypoint
+├─ Liver.py                # Model training / data utilities
+├─ Liver.pkl               # Trained model artifact
+├─ Liver2.pkl              # (Optional) Alternate model artifact
+├─ Dataset/
+│  └─ Liver_data.csv       # Dataset used for training/validation
+├─ templates/
+│  ├─ index.html           # Input form
+│  └─ result.html          # Prediction result view
+├─ static/                 # Static assets
+├─ Images/                 # Screenshots / GIFs
+├─ requirements.txt        # Python dependencies
+└─ Procfile                # Process declaration (Heroku style)
 ```
 
-  
-## Screenshot
+## Clone and Run Locally
 
-![App Screenshot](https://raw.githubusercontent.com/SagarDhandare/Liver-Disease-Prediction-Project/main/Images/screenshot.png)
+1) Clone this repository
 
-  
+```bash
+git clone https://github.com/Ayushyadav16/liver_disease_classifier.git
+cd liver_disease_classifier
+```
+
+2) Create and activate a virtual environment (recommended)
+
+```bash
+python -m venv .venv
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+```
+
+3) Install dependencies
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+4) Run the app
+
+```bash
+python app.py
+```
+
+The app will start on `http://127.0.0.1:5000` unless otherwise configured.
+
+## Input Features (Typical)
+- Total Bilirubin, Direct Bilirubin
+- Alkaline Phosphatase, Alamine Aminotransferase (ALT), Aspartate Aminotransferase (AST)
+- Total Proteins, Albumin, Albumin/Globulin Ratio
+- Age, Gender
+
+## Model
+- Trained with scikit-learn using the Indian Liver Patient Records dataset.
+- Model artifact loaded from `Liver.pkl` at runtime.
+
+## Screenshots
+
+![App Screenshot](Images/screenshot.png)
+
 ## Deployment
 
-To deploy this project run following command in the project folder
+This app can be deployed on most Python-friendly platforms (Render, Railway, Azure, etc.). A `Procfile` is included for Heroku-style process declaration. Typical steps:
+
+1) Ensure `requirements.txt` is up to date.
+2) Configure environment (Python version, buildpacks if needed).
+3) Start command equivalent to:
 
 ```bash
-  git bash open
+python app.py
 ```
 
-Create .git file
-```bash
-  git init
-```
-Track all the files
-```bash
-  git add .
-```
-Cheacking file track or not
-```bash
-  git status
-```
-Store as separate version
-```bash
-  git commit -m 'message'
-```
-### Deployment on Heroku
+## Contributing
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
-Heroku login on git bash
+## Acknowledgements
+- Dataset: [UCI / Kaggle – Indian Liver Patient Records](https://www.kaggle.com/uciml/indian-liver-patient-records)
+- Built with Flask, scikit-learn, and Python.
 
-```bash
-  heroku login
-```
-Create new app
+---
 
-```bash
-  heroku create
-```
-Push Code
-```bash
-  git remote -v
-```
-Push code to Master Branch
-```bash
-  git push heroku master
-```
-
-  
-## Related
-
-Here are some related projects
-
-
-[Heart Disease](https://github.com/SagarDhandare/Heart-Disease-Project)
-
-[Stroke Prediction](https://github.com/SagarDhandare/Stroke-Prediction-Project)
-
-[Diabetes Disease](https://github.com/SagarDhandare/Diabetes-Disease-Project)
-
-[Chronic Kidney Disease](https://github.com/SagarDhandare/Chronic-Kidney-Disease-Prediction-Project)
-
-[Breast Cancer Disease](https://github.com/SagarDhandare/Breast-Cancer-Disease-Prediction-Project)
-
-[Medical Insurance Cost](https://github.com/SagarDhandare/Medical-Insurance-Cost-Project)
-  
-## Feedback
-
-If you have any feedback, please reach out to me at [LinkedIn](https://www.linkedin.com/in/sagardhandare/)
-
-Please do ⭐ the repository, if you like this.😊
-
-Thank you ❤
+If you find this useful, consider starring the repo. 💙
